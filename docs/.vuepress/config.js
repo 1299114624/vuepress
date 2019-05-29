@@ -1,12 +1,9 @@
 module.exports = {
     title: '个人网站', // 设置网站标题
-    base: '/vuepress/',
+    base: '/vuepress/dist/',
     description: '叶硕强', //描述
     dest: './dist',   // 设置输出目录
     port: 8087, //端口
-    head: [
-      ['link', { rel: 'icon', href: "$withBase('/logo3.png')" }],
-    ],
     themeConfig: { //主题配置
       // 添加导航栏
       nav: [
