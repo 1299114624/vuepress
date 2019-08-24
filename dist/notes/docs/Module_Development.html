@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>一种大型可复用项目的模块化开发思想 | 个人网站</title>
+    <meta name="description" content="叶硕强">
+    <link rel="icon" href="/logo.png">
+    
+    <link rel="preload" href="/assets/css/0.styles.ab6b4e78.css" as="style"><link rel="preload" href="/assets/js/app.3df8f2d8.js" as="script"><link rel="preload" href="/assets/js/15.32690dc7.js" as="script"><link rel="prefetch" href="/assets/js/10.6c47f70d.js"><link rel="prefetch" href="/assets/js/11.007e6bc2.js"><link rel="prefetch" href="/assets/js/12.a1bf6a3d.js"><link rel="prefetch" href="/assets/js/13.7c11f54e.js"><link rel="prefetch" href="/assets/js/14.215c8332.js"><link rel="prefetch" href="/assets/js/16.aab5b457.js"><link rel="prefetch" href="/assets/js/17.24136228.js"><link rel="prefetch" href="/assets/js/18.9e04a0af.js"><link rel="prefetch" href="/assets/js/19.bac24873.js"><link rel="prefetch" href="/assets/js/2.1eaba07f.js"><link rel="prefetch" href="/assets/js/20.8fc60725.js"><link rel="prefetch" href="/assets/js/21.d95d0b31.js"><link rel="prefetch" href="/assets/js/22.78a21ac6.js"><link rel="prefetch" href="/assets/js/3.8a12d0ca.js"><link rel="prefetch" href="/assets/js/4.884a6966.js"><link rel="prefetch" href="/assets/js/5.ffaa29cf.js"><link rel="prefetch" href="/assets/js/6.ac297b31.js"><link rel="prefetch" href="/assets/js/7.aa64376a.js"><link rel="prefetch" href="/assets/js/8.6d771e99.js"><link rel="prefetch" href="/assets/js/9.de4f3299.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ab6b4e78.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="个人网站" class="logo"> <span class="site-name can-hide">个人网站</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/articles/" class="nav-link">妙笔生花</a></div><div class="nav-item"><a href="/yuki/" class="nav-link">yuki控件库专栏</a></div><div class="nav-item"><a href="/notes/" class="nav-link router-link-active">开发笔记</a></div><div class="nav-item"><a href="/favorite/" class="nav-link">收藏夹</a></div><div class="nav-item"><a href="http://yeshuoqiang.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  个人网站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/1299114624" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/articles/" class="nav-link">妙笔生花</a></div><div class="nav-item"><a href="/yuki/" class="nav-link">yuki控件库专栏</a></div><div class="nav-item"><a href="/notes/" class="nav-link router-link-active">开发笔记</a></div><div class="nav-item"><a href="/favorite/" class="nav-link">收藏夹</a></div><div class="nav-item"><a href="http://yeshuoqiang.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  个人网站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="https://github.com/1299114624" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>一种大型可复用项目的模块化开发思想</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/notes/docs/Module_Development.html#main-js" class="sidebar-link">main.js</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/notes/docs/Module_Development.html#service-js" class="sidebar-link">Service.js</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/notes/docs/Module_Development.html#config-配置文件" class="sidebar-link">config 配置文件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/notes/docs/Module_Development.html#scene-场景方案配置文件" class="sidebar-link">scene 场景方案配置文件</a></li><li class="sidebar-sub-header"><a href="/notes/docs/Module_Development.html#framemain-js" class="sidebar-link">frameMain.js</a></li><li class="sidebar-sub-header"><a href="/notes/docs/Module_Development.html#atom-所有原子组件数据来源的配置文件" class="sidebar-link">atom 所有原子组件数据来源的配置文件</a></li></ul></li><li><a href="/notes/docs/Module_Development.html#components" class="sidebar-link">components</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/notes/docs/Module_Development.html#global-js" class="sidebar-link">global.js</a></li><li class="sidebar-sub-header"><a href="/notes/docs/Module_Development.html#table-vue" class="sidebar-link">table.vue</a></li></ul></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="一种大型可复用项目的模块化开发思想"><a href="#一种大型可复用项目的模块化开发思想" aria-hidden="true" class="header-anchor">#</a> 一种大型可复用项目的模块化开发思想</h1> <p>组件和数据分离，所有数据请求的url和格式单独放在一个配置对象里，可复用方案分别有其对应的配置文件</p> <p>项目结构</p> <div class="language- extra-class"><pre class="language-text"><code>├─ common
+├─ components
+|  ├─ gis
+|  ├─ table
+|  ├─ chart
+|  └─ others
+├─ config
+|  ├─ atom
+|  |  ├─ gis
+|  |  ├─ table
+|  |  ├─ common
+|  |  ├─ chart
+|  |  └─ others
+|  ├─ scene
+|  |  ├─ 5g-ready
+|  |  └─ np
+|  └─ frameMain.js
+├─ lang
+├─ service
+├─ store
+├─ views
+└─ main.js
+</code></pre></div><h2 id="main-js"><a href="#main-js" aria-hidden="true" class="header-anchor">#</a> main.js</h2> <p>在 main.js 里通过模块化方式引入 Service 请求文件，将请求数据的方式通过原型链写在 vue 实例的原型上。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> Service <span class="token keyword">from</span> <span class="token string">'@/service/service.js'</span>
+<span class="token class-name">Vue</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>Service <span class="token operator">=</span> Service
+</code></pre></div><h2 id="service-js"><a href="#service-js" aria-hidden="true" class="header-anchor">#</a> Service.js</h2> <p>Sevice.js 记录了数据的请求代码，业务侧请求的配置文件详见 config__atom__common__index.js。</p> <p>Service.prototype.commonQuery 返回的是一个 deferred 延迟对象，在 config__atom__common__index.js里使用 .then 来执行成功回调的过滤函数（我们以前常用的是 $.ajax().then()，这里的 $.ajax() 也是返回了一个 deferred 延迟对象）。</p> <p>关于 deffered 介绍详见 <a href="http://www.ruanyifeng.com/blog/2011/08/a_detailed_explanation_of_jquery_deferred_object.html" target="_blank" rel="noopener noreferrer">deferred<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>关于 .then 和 .done 的介绍详见 <a href="http://jquery.cuishifeng.cn/deferred.then.html" target="_blank" rel="noopener noreferrer">jquery手册<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token function-variable function">Service</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">const</span> commonQueryURL <span class="token operator">=</span> window<span class="token punctuation">.</span>capacityPlanFrameConfig<span class="token punctuation">.</span>common<span class="token punctuation">.</span>commonQueryURL
+<span class="token comment">/**
+* 通用查询方法
+* @param {String} key 查询后台service key 非必
+* @param {Object} paramOpt 查询后台传参
+* @param {Object} opt 其它配置，包括是否异步、使用的url
+* @param {*} 查询延迟对象
+*/</span>
+<span class="token class-name">Service</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">commonQuery</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> paramOpt<span class="token punctuation">,</span> opt</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> reqUrl <span class="token operator">=</span> basePath <span class="token operator">+</span> commonQueryURL
+    <span class="token keyword">const</span> params <span class="token operator">=</span> <span class="token function">handleParams</span><span class="token punctuation">(</span>paramOpt<span class="token punctuation">)</span>
+    <span class="token keyword">const</span> req <span class="token operator">=</span> <span class="token punctuation">{</span>
+        url<span class="token punctuation">:</span> reqUrl<span class="token punctuation">,</span>
+        data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            projectId<span class="token punctuation">,</span>
+            params
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        req<span class="token punctuation">.</span>data<span class="token punctuation">.</span>key <span class="token operator">=</span> key
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>opt<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>opt<span class="token punctuation">.</span>url<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            req<span class="token punctuation">.</span>url <span class="token operator">=</span> basePath <span class="token operator">+</span> opt<span class="token punctuation">.</span>url
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>opt<span class="token punctuation">.</span>wholeUrl<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            req<span class="token punctuation">.</span>url <span class="token operator">=</span> opt<span class="token punctuation">.</span>wholeUrl
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>opt<span class="token punctuation">.</span>async<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            req<span class="token punctuation">.</span>async <span class="token operator">=</span> opt<span class="token punctuation">.</span>async
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>isNeedMock <span class="token operator">&amp;&amp;</span> mockKeyArr<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        req<span class="token punctuation">.</span>url <span class="token operator">=</span> baseMockUrl <span class="token operator">+</span> key
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token function">xhr</span><span class="token punctuation">(</span>req<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+* 发送ajax 请求
+* @param {Object} opt请求配置
+* @return {*} 延迟对象
+*/</span>
+<span class="token keyword">function</span> <span class="token function">xhr</span><span class="token punctuation">(</span><span class="token parameter">opt</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> defer <span class="token operator">=</span> $<span class="token punctuation">.</span><span class="token function">Deferred</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        async<span class="token punctuation">:</span> opt<span class="token punctuation">.</span>async <span class="token operator">!==</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        url<span class="token punctuation">:</span> opt<span class="token punctuation">.</span>url<span class="token punctuation">,</span>
+        type<span class="token punctuation">:</span> opt<span class="token punctuation">.</span>type <span class="token operator">||</span> <span class="token string">'POST'</span><span class="token punctuation">,</span>
+        data<span class="token punctuation">:</span> opt<span class="token punctuation">.</span>data <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+        dataType<span class="token punctuation">:</span> <span class="token string">'json'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">done</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        defer<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fail</span><span class="token punctuation">(</span>errorHandler<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> deffer
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+* error 报错抛出
+*/</span>
+<span class="token keyword">function</span> <span class="token function">errorHandler</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'ajax request error'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Service</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>业务侧的 vm.Service.commonQuery('getMenuData') 必须返回一个 deferred 对象才能在请求得到结果之后执行过滤函数，而不是在请求结束后立刻执行过滤函数。</p> <p>（假设 vm.Service.commonQuery('getMenuData') 是一个耗时很长的请求，这个请求延时 5s 执行 alert ，如果 vm.Service.commonQuery('getMenuData')没有返回一个 deferred 对象，则会立即执行 .then() 函数然后再等 5s 执行 alert，起不到延时的作用）</p> <h2 id="config-配置文件"><a href="#config-配置文件" aria-hidden="true" class="header-anchor">#</a> config 配置文件</h2> <p>config 文件夹里包括不同场景的配置文件（为了复用，结构大体相同，但内容不同）和基本组件的配置文件</p> <h3 id="scene-场景方案配置文件"><a href="#scene-场景方案配置文件" aria-hidden="true" class="header-anchor">#</a> scene 场景方案配置文件</h3> <p>以 5g-ready 为例，在 config__scene__5g-ready__index.js 里预先规定好该方案的 gis 谷歌地图和 rightPanel 右侧折叠面板中将要用到的所有事件名。rightPanel 内部的基本组件将要用到的事件名放在 config__atom 里，具体配置将在下一节详讲。其结构大致如下：</p> <div class="language- extra-class"><pre class="language-text"><code>scene
+├─ 5g-ready
+|  ├─ page-tools
+|  |  ├─ filterPanel.js
+|  |  ├─ modalDialog.js
+|  |  └─ ...
+|  └─index.js
+...
+</code></pre></div><p>page-tools 中存放谷歌地图与用户交互的事件名，如点击出现弹窗，点击过滤面板过滤谷歌地图上自己画的点线面等。index.js 里输出不同页面不同图层的事件名，目前的图层有4层，分别为全市级，区域级，站点级，设备级的图层，每个图层都有其对应的谷歌地图展示图例和右侧面板的详情数据。例如 IP-ACC-1 对象里包含了IP设备在接入层里的全市级图层的地图配置和数据配置</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">/**
+* @desc 5g场景配置
+*/</span>
+<span class="token keyword">import</span> pageTools <span class="token keyword">from</span> <span class="token string">'./page-tools'</span>
+<span class="token keyword">import</span> rightCover <span class="token keyword">from</span> <span class="token string">'@/config/atom/right-panel/cover'</span>
+<span class="token comment">// 业务原子组件</span>
+<span class="token keyword">import</span> atom <span class="token keyword">from</span> <span class="token string">'@/config/atom'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>gp<span class="token punctuation">,</span> gc<span class="token punctuation">,</span> gm<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/config/atom/gis'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> rightPanelTools<span class="token punctuation">,</span> collapse<span class="token punctuation">,</span> back<span class="token punctuation">,</span> path <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/config/atom/right-panel'</span>
+<span class="token comment">/**
+ * 配置项
+ * 
+ * @config  common - 公共配置项
+ *  @config  beforeRender - 渲染前做的工作
+ *  @config  levelRule - 查询后台的传参
+ *  @config  commonQueryURL - 公共查询的URL值
+ *  @config  gisPrepare - gis提前准备工作
+ *  @config  rightPanelTools - 右侧面板工具栏配置
+ * @config  pageMap - 页面显示内容的配置项
+ *  @config  [pageIndex] - 当前层次
+ *  @config  gis - GIS配置
+ *  @config  rightPanel - 右侧面板配置
+ *  @config  pageTools
+ */</span>
+ <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    common<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        beforeRender<span class="token punctuation">:</span> atom<span class="token punctuation">.</span>common<span class="token punctuation">.</span>beforeRender5G<span class="token punctuation">,</span>
+        levelRule<span class="token punctuation">:</span> atom<span class="token punctuation">.</span>common<span class="token punctuation">.</span>levelRule5G<span class="token punctuation">,</span>
+        commonQueryURL<span class="token punctuation">:</span> <span class="token string">'commonResult/queryCommonResult.action'</span><span class="token punctuation">,</span>
+        gisPrepare<span class="token punctuation">:</span> gp<span class="token punctuation">.</span>gisPrepare<span class="token punctuation">,</span>
+        rightPanelTools<span class="token punctuation">:</span> rightPanelTools<span class="token punctuation">,</span>
+        backEvents<span class="token punctuation">:</span> back<span class="token punctuation">,</span>
+        pathEvents<span class="token punctuation">:</span> path
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    pageMap<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">/**
+        * IP 当前页面主页
+        * ACC 接入层，外部输入框架层次，全部层次配置使用All
+        * @params {Number} pageIndex 当前层次
+        */</span>
+        <span class="token string">'IP-ACC-1'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            gis<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                    content<span class="token punctuation">:</span> <span class="token punctuation">[</span>gc<span class="token punctuation">.</span>boundary_keyMessage_level4<span class="token punctuation">,</span> gc<span class="token punctuation">.</span>sitePointInitHide<span class="token punctuation">,</span> gc<span class="token punctuation">.</span>siteLineInitHide<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    message<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                        clickGeometryCollection<span class="token punctuation">:</span> gm<span class="token punctuation">.</span>cityRegionClick5G<span class="token punctuation">,</span>
+                        clickPoint<span class="token punctuation">:</span> gm<span class="token punctuation">.</span>regionSiteClick<span class="token punctuation">,</span>
+                        clickLineString<span class="token punctuation">:</span> gm<span class="token punctuation">.</span>regionSiteClick<span class="token punctuation">,</span>
+                        clickNone<span class="token punctuation">:</span> gm<span class="token punctuation">.</span>regionClickNone
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            rightPanel<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                    <span class="token comment">// index: 0 索引，非必要，数量过多时方便阅读查看</span>
+                    <span class="token comment">// type: 'collapse' 默认是折叠栏</span>
+                    <span class="token comment">// exclusive: true 折叠栏是否互斥，不配置默认互斥</span>
+                    content<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                        collapse<span class="token punctuation">.</span>cityStatisticAcc<span class="token punctuation">,</span> collapse<span class="token punctuation">.</span>regionStatistic<span class="token punctuation">,</span> collapse<span class="token punctuation">.</span>siteStatistic<span class="token punctuation">,</span> collapse<span class="token punctuation">.</span>linkStatistic<span class="token punctuation">,</span> collapse<span class="token punctuation">.</span>ringChainStatistic<span class="token punctuation">,</span> collapse<span class="token punctuation">.</span>deviceStatistic<span class="token punctuation">,</span> collapse<span class="token punctuation">.</span>boardStatistic<span class="token punctuation">,</span> collapse<span class="token punctuation">.</span>portStatistic
+                    <span class="token punctuation">]</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token operator">...</span>
+    <span class="token punctuation">}</span>
+ <span class="token punctuation">}</span>
+</code></pre></div><p>gis 和 rightPanel 中存储了谷歌地图和折叠面板的事件方法名，atom.common.beforeRender5G里规定了页面加载前的数据请求</p> <h3 id="framemain-js"><a href="#framemain-js" aria-hidden="true" class="header-anchor">#</a> frameMain.js</h3> <p>引入 index.js 输出的对象，根据使用场景 sceneId 选取配置挂载到 window 对象上。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> scene5GReadyConfig <span class="token keyword">from</span> <span class="token string">'@/config/scene/5g-ready/index.js'</span>
+<span class="token keyword">import</span> sceneNPConfig <span class="token keyword">from</span> <span class="token string">'@/config/scene/np/index.js'</span>
+<span class="token keyword">const</span> sceneConfigMap <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token number">10100000</span><span class="token punctuation">:</span> scene5GReadyConfig<span class="token punctuation">,</span>
+    <span class="token number">10600620</span><span class="token punctuation">:</span> sceneNPConfig
+<span class="token punctuation">}</span>
+window<span class="token punctuation">.</span>capacityPlanFrameConfig <span class="token operator">=</span> sceneConfigMap<span class="token punctuation">[</span>window<span class="token punctuation">.</span>sceneId<span class="token punctuation">]</span>
+</code></pre></div><h3 id="atom-所有原子组件数据来源的配置文件"><a href="#atom-所有原子组件数据来源的配置文件" aria-hidden="true" class="header-anchor">#</a> atom 所有原子组件数据来源的配置文件</h3> <p>atom 文件夹中记录了所有公共组建的基本配置信息，具体的组件和方法得去 components 文件夹中找，每个组件都有一个 bindEvents 方法通过 $on 接受绑定事件，在 atom 配置信息里通过 vm.$emit 来规定将要触发的事件</p> <div class="language- extra-class"><pre class="language-text"><code>atom
+├─ rightPanel
+|  ├─ collapse.js
+|  └─ ...
+├─ table
+|  ├─ index.js
+|  └─ column.js
+├─ common
+|  └─ index.js
+├─ ...
+└─ index.js
+</code></pre></div><p>atom__rightPanel__collapse.js：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> table <span class="token keyword">from</span> <span class="token string">'@/config/atom/table'</span>
+<span class="token keyword">import</span> others <span class="token keyword">from</span> <span class="token string">'@/config/atom/others'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 设备现状</span>
+    deviceCurStatus<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        name<span class="token punctuation">:</span> <span class="token string">'deviceCurStatus'</span><span class="token punctuation">,</span>
+        title<span class="token punctuation">:</span> <span class="token constant">I18N</span><span class="token punctuation">.</span><span class="token constant">DEVICE_CUR_STATUS</span><span class="token punctuation">,</span>
+        compList<span class="token punctuation">:</span> <span class="token punctuation">[</span>textCard<span class="token punctuation">.</span>deviceBasicInfoDialog<span class="token punctuation">,</span> others<span class="token punctuation">.</span>devicePanel<span class="token punctuation">,</span> table<span class="token punctuation">.</span>deviceBoardInfo<span class="token punctuation">,</span> table<span class="token punctuation">.</span>devicePortInfo<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token operator">...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>atom__table__index.js：记载了所有table的配置，根据不同场景scene配置中的折叠面板collapse配置来从中挑选</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> column <span class="token keyword">from</span> <span class="token string">'./column.js/'</span>
+<span class="token comment">/**
+* @desc 表格 原子配置
+*
+* @config type: 组件类型
+* @config opts: 显示内容配置
+*   @config title: I18N.ADMIN_STATISTIC 表格title描述
+*   @config clickable: false 行是否可点击
+*   @config hasPagination: false 是否有翻页
+*   @config getSpanParams: function(){}获取合并单元格数据Step 1
+*   @config config: function(vm) {
+*                    return {
+*                       hasSearch: false,// 不配时默认为有搜索框
+*                       columns: []
+*                       more: {
+*                           title: '',
+*                           columns: []
+*                       }
+*                    }   
+*                   }// 表格列配置
+*   @config config: data: {
+*                       key: '',
+*                       orderby: 'deviceReplace',
+*                       orderSort: 'desc/asc',
+*                   }// 表格请求数据配置
+* @config message: 消息配置
+*/</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    <span class="token comment">// -------------行政区 start------------</span>
+    adminRegionStatistic<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        type<span class="token punctuation">:</span> <span class="token string">'Table'</span><span class="token punctuation">,</span>
+        opts<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            config<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                columns<span class="token punctuation">:</span> <span class="token punctuation">[</span>columns<span class="token punctuation">.</span>adminRegion<span class="token punctuation">,</span> columns<span class="token punctuation">.</span>portMerge<span class="token punctuation">]</span><span class="token punctuation">,</span>
+                more<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                    title<span class="token punctuation">:</span><span class="token constant">I18N</span><span class="token punctuation">.</span><span class="token constant">ADMIN_REGION_STATISTIC</span><span class="token punctuation">,</span>
+                    columns<span class="token punctuation">:</span> <span class="token punctuation">[</span>columns<span class="token punctuation">.</span>boardMerge<span class="token punctuation">,</span> columns<span class="token punctuation">.</span>portMerge<span class="token punctuation">]</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                key<span class="token punctuation">:</span> <span class="token string">'getIPNetPlanDistrictArea'</span><span class="token punctuation">,</span>
+                orderby<span class="token punctuation">:</span> <span class="token string">'deviceReplace'</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        message<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                type<span class="token punctuation">:</span> <span class="token string">'selfDefine'</span><span class="token punctuation">,</span>
+                <span class="token function">selfDefine</span><span class="token punctuation">(</span><span class="token parameter">vm<span class="token punctuation">,</span> rowData</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    vm<span class="token punctuation">.</span>$root<span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">'GisView'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
+                        <span class="token punctuation">{</span>type<span class="token punctuation">:</span> <span class="token string">'clearKeyMessage'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+                        <span class="token punctuation">{</span>type<span class="token punctuation">:</span> <span class="token string">'clearAllLayer'</span><span class="token punctuation">}</span>
+                    <span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>type<span class="token punctuation">:</span> <span class="token string">'toPageLastIndex'</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token operator">...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>atom__table__columns.js：table的列配置，包括表头名，数据的0转-处理等等</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> NumberHandler<span class="token punctuation">,</span> BusinessHandler <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/common/tools/dataHandler.js'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    <span class="token comment">//-----------common.start------------</span>
+    <span class="token comment">// 利用率 （%）</span>
+    useRatePercent<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        prop<span class="token punctuation">:</span> <span class="token string">'useRatio'</span><span class="token punctuation">,</span>
+        label<span class="token punctuation">:</span> <span class="token string">'I18N.USE_RATE_PERCENT'</span>，
+        align<span class="token punctuation">:</span> <span class="token string">'right'</span><span class="token punctuation">,</span>
+        sortable<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token function">formatter</span><span class="token punctuation">(</span><span class="token parameter">row<span class="token punctuation">,</span> column<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> NumberHandler<span class="token punctuation">.</span><span class="token function">cleanNegaData</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> <span class="token string">'-'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// 总数</span>
+    totalCountSum<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        prop<span class="token punctuation">:</span> <span class="token string">'sum'</span><span class="token punctuation">,</span>
+        label<span class="token punctuation">:</span> <span class="token string">'I18N.SUM'</span><span class="token punctuation">,</span>
+        align<span class="token punctuation">:</span> <span class="token string">'center'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token operator">...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>atom__common__index.js：记录了在 App.vue 加载时，界面渲染前获取数据的函数</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 界面渲染前需要提前获取的参数</span>
+    <span class="token function-variable function">beforeRender5G</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">vm</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> pageIndexPromise <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 当为非框架3.0时才需要查询</span>
+            vm<span class="token punctuation">.</span>Service<span class="token punctuation">.</span><span class="token function">commonQuery</span><span class="token punctuation">(</span><span class="token string">'getMenuData'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>res <span class="token operator">&amp;&amp;</span> res<span class="token punctuation">.</span>ret<span class="token punctuation">.</span>returnData<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">const</span> result <span class="token operator">=</span> res<span class="token punctuation">.</span>ret<span class="token punctuation">.</span>returnData
+                    <span class="token keyword">const</span> curLayer <span class="token operator">=</span> result<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>children<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>type
+                    <span class="token keyword">const</span> startPageIndex <span class="token operator">=</span> curLayer<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'_'</span><span class="token punctuation">,</span><span class="token string">'-'</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'-1'</span>
+                    <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                        startPageIndex<span class="token punctuation">,</span>
+                        curLayer<span class="token punctuation">,</span>
+                        menuRes<span class="token punctuation">:</span> res<span class="token punctuation">.</span>ret<span class="token punctuation">.</span>returnData
+                    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token keyword">const</span> yearPromise <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            vm<span class="token punctuation">.</span>Service<span class="token punctuation">.</span><span class="token function">commonQuery</span><span class="token punctuation">(</span><span class="token string">'getYear'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>res <span class="token operator">&amp;&amp;</span> res<span class="token punctuation">.</span>ret<span class="token punctuation">.</span>returnData<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">resolve</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>ret<span class="token punctuation">.</span>returnData<span class="token punctuation">)</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">[</span>pageIndexPromise<span class="token punctuation">,</span> yearPromise<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">resArr</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token keyword">const</span> startPageIndex <span class="token operator">=</span> resArr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>startPageIndex
+            <span class="token keyword">const</span> curLayer <span class="token operator">=</span> resArr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>curLayer
+            vm<span class="token punctuation">.</span>$store<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'setPageIndex'</span><span class="token punctuation">,</span> startPageIndex<span class="token punctuation">)</span>
+            vm<span class="token punctuation">.</span>$store<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'setCurLayer'</span><span class="token punctuation">,</span> curLayer<span class="token punctuation">)</span>
+            vm<span class="token punctuation">.</span>$store<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'initBreadcrumb'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+                name<span class="token punctuation">:</span> window<span class="token punctuation">.</span>gisInfo<span class="token punctuation">.</span>city<span class="token punctuation">,</span>
+                index<span class="token punctuation">:</span> startPageIndex
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+            <span class="token keyword">const</span> yearArr <span class="token operator">=</span> resArr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+            vm<span class="token punctuation">.</span>$store<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'initYear'</span><span class="token punctuation">,</span> yearArr<span class="token punctuation">)</span>
+            vm<span class="token punctuation">.</span>$store<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'setStoreValue'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+                key<span class="token punctuation">:</span> <span class="token string">'menuRes'</span><span class="token punctuation">,</span>
+                value<span class="token punctuation">:</span> resArr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>menuRes
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>atom__index.js：只引入common.js 供场景配置使用</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">/**
+* @desc 业务相关原子组件
+*/</span>
+<span class="token keyword">import</span> common <span class="token keyword">from</span> <span class="token string">'./common'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    common
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="components"><a href="#components" aria-hidden="true" class="header-anchor">#</a> components</h2> <p>components 文件夹中存储所有原子组件，在页面中通过动态组件 :is 的方式引用，需要传入配置信息和数据信息</p> <div class="language- extra-class"><pre class="language-text"><code>components
+├─ base
+├─ chart
+├─ gis
+├─ table
+├─ tabletext
+├─ global.js
+...
+</code></pre></div><h3 id="global-js"><a href="#global-js" aria-hidden="true" class="header-anchor">#</a> global.js</h3> <p>在 global.js 中注册所有的原子组件，再在 main.js 中引入 global.js</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">const</span> requireComponent <span class="token operator">=</span> require<span class="token punctuation">.</span><span class="token function">context</span><span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token regex">/\.vue$/</span><span class="token punctuation">)</span>
+requireComponent<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">fileName</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 因为得到的 fileName 格式是 './baseButton.vue' 所以这里我们去掉头和尾，只保留真正的文件名</span>
+    <span class="token keyword">const</span> componentName <span class="token operator">=</span> <span class="token function">capitalizeFirstLetter</span><span class="token punctuation">(</span>fileName<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/w+(?=\.vue$)/</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> componentConfig <span class="token operator">=</span> <span class="token function">requireComponent</span><span class="token punctuation">(</span>fileName<span class="token punctuation">)</span>
+    Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span>componentName<span class="token punctuation">,</span> componentConfig<span class="token punctuation">.</span>default <span class="token operator">||</span> componentConfig<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">/**
+* 处理路径名
+* @param {String} string 组件名字符串
+* @returns {String} 命名规则
+*/</span>
+<span class="token keyword">function</span> <span class="token function">capitalizeFirstLetter</span><span class="token punctuation">(</span><span class="token parameter">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> string<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> string<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="table-vue"><a href="#table-vue" aria-hidden="true" class="header-anchor">#</a> table.vue</h3> <p>table 组件以 props 中的 opts 接收当前组件的配置信息，该配置信息从 config 文件夹中读取，将一个动态数据请求函数传入 yuki-table 组件中</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>cp-table-head<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">v-text</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>opts.title<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>yuki-table</span>
+            <span class="token attr-name">:config</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>getTableConfig()<span class="token punctuation">'</span></span>
+            <span class="token attr-name">:data</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>getTableData()<span class="token punctuation">'</span></span>
+            <span class="token attr-name">:hasPagination</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>opts.hasPagination !== false<span class="token punctuation">'</span></span>
+            <span class="token attr-name">:row-click</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>opts.clickable === false ? null : onRowClick<span class="token punctuation">'</span></span>
+            <span class="token attr-name">loading</span><span class="token punctuation">&gt;</span></span>
+        &lt;/yuki/table&gt;
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> getConfig<span class="token punctuation">,</span> getData <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./tools/tableHandler.js'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    props<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        message<span class="token punctuation">:</span> Object<span class="token punctuation">,</span>
+        opts<span class="token punctuation">:</span> Object<span class="token punctuation">,</span>
+        addParams<span class="token punctuation">:</span> Object
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token function">getTableConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">getConfig</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function">getTableData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">const</span> params <span class="token operator">=</span> <span class="token punctuation">{</span>
+                id<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>id<span class="token punctuation">,</span>
+                curYear<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>curYear<span class="token punctuation">,</span>
+                curLayer<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>curLayer<span class="token punctuation">,</span>
+                level<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>level<span class="token punctuation">,</span>
+                schemeId<span class="token punctuation">:</span> window<span class="token punctuation">.</span>capacitySchemeId<span class="token punctuation">,</span>
+                <span class="token operator">...</span>this<span class="token punctuation">.</span>addParams
+            <span class="token punctuation">}</span>
+            <span class="token keyword">const</span> dataFunc <span class="token operator">=</span> <span class="token function">getData</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> params<span class="token punctuation">)</span>
+            dataFunc<span class="token punctuation">.</span>paramsKey <span class="token operator">=</span> <span class="token punctuation">{</span> curYear<span class="token punctuation">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>curYear <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> dataFunc
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token operator">...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="opts"><a href="#opts" aria-hidden="true" class="header-anchor">#</a> opts</h4> <p>从 views 文件夹中的页面组件中传给 table 组件的 opts 格式如下，opts 包含了表格的配置信息，表格数据需要在之后根据 key 请求后台得到</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+    config<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        hashSearch<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        columns<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>props<span class="token punctuation">:</span> <span class="token string">&quot;deviceType&quot;</span><span class="token punctuation">,</span> label<span class="token punctuation">:</span> <span class="token string">&quot;设备型号&quot;</span><span class="token punctuation">,</span> align<span class="token punctuation">:</span> <span class="token string">&quot;left&quot;</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>props<span class="token punctuation">:</span> <span class="token string">&quot;deviceReplace&quot;</span><span class="token punctuation">,</span> label<span class="token punctuation">:</span> <span class="token string">&quot;替换&quot;</span><span class="token punctuation">,</span> children<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>props<span class="token punctuation">:</span> <span class="token string">&quot;deviceReplace&quot;</span><span class="token punctuation">,</span> label<span class="token punctuation">:</span> <span class="token string">&quot;入网&quot;</span><span class="token punctuation">,</span> align<span class="token punctuation">:</span> <span class="token string">&quot;right&quot;</span><span class="token punctuation">,</span> sortable<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>props<span class="token punctuation">:</span> <span class="token string">&quot;deviceReplaceOut&quot;</span><span class="token punctuation">,</span> label<span class="token punctuation">:</span> <span class="token string">&quot;退网&quot;</span><span class="token punctuation">,</span> align<span class="token punctuation">:</span> <span class="token string">&quot;right&quot;</span><span class="token punctuation">,</span> sortable<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">]</span><span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        key<span class="token punctuation">:</span> <span class="token string">&quot;getIPDeviceDetail&quot;</span><span class="token punctuation">,</span>
+        orderby<span class="token punctuation">:</span> <span class="token string">&quot;deviceAdd&quot;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="tablehandler-js"><a href="#tablehandler-js" aria-hidden="true" class="header-anchor">#</a> tableHandler.js</h4> <p>tableHandler.js 负责处理表格的配置对象和数据信息，通过在 table.vue 中给 getConfig 和 getData 传入 this 当前 vue 实例来拿到opts</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">/** 
+* 获取表格控件的 config 配置
+* @param {Object} vm vue
+* @return {Object} 表格控件的 config 配置
+*/</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">getConfig</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">vm</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> tableConfigCfg <span class="token operator">=</span> <span class="token keyword">typeof</span> <span class="token punctuation">(</span>vm<span class="token punctuation">.</span>opts<span class="token punctuation">.</span>config<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'function'</span> <span class="token operator">?</span> vm<span class="token punctuation">.</span>opts<span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span>vm<span class="token punctuation">)</span> <span class="token punctuation">:</span> vm<span class="token punctuation">.</span>opts<span class="token punctuation">.</span>config
+    <span class="token keyword">const</span> dataParser <span class="token operator">=</span> tableConfigCfg<span class="token punctuation">.</span>dataParser <span class="token operator">?</span> tableConfigCfg<span class="token punctuation">.</span>dataParser <span class="token punctuation">:</span> _dataParser
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>tableConfigCfg<span class="token punctuation">.</span>hasSearch <span class="token operator">===</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span>
+            columns<span class="token punctuation">:</span> tableConfigCfg<span class="token punctuation">.</span>columns<span class="token punctuation">,</span>
+            dataParser
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/** 
+* 获取表格控件的 data 配置
+* @param {Object} vm vue
+* @param {Object} commonParams 公共查询参数
+* @return {Object} 表格控件的 data 配置
+*/</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">getData</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">vm<span class="token punctuation">,</span> commonParams</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> tableDataCfg <span class="token operator">=</span> vm<span class="token punctuation">.</span>opts<span class="token punctuation">.</span>data
+    <span class="token keyword">return</span> <span class="token function">fetchTableData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        vm<span class="token punctuation">,</span>
+        key<span class="token punctuation">:</span> tableDataCfg<span class="token punctuation">.</span>key<span class="token punctuation">,</span>
+        orderby<span class="token punctuation">:</span> tableDataCfg<span class="token punctuation">.</span>orderby<span class="token punctuation">,</span>
+        orderSort<span class="token punctuation">:</span> tableDataCfg<span class="token punctuation">.</span>orderSort <span class="token operator">||</span> <span class="token string">'desc'</span><span class="token punctuation">,</span>
+        queryParams<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token operator">...</span>commonParams
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/** 
+* 表格查询传参
+* @param {Object} Obj={vm, key, orderby, orderSort, queryParams} key，排序，其它
+* @return {Promise} 查询Promise
+*/</span>
+<span class="token keyword">function</span> <span class="token function">fetchTableData</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>vm<span class="token punctuation">,</span> key<span class="token punctuation">,</span> orderby<span class="token punctuation">,</span> orderSort<span class="token punctuation">,</span> queryParams<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">dataFunc</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">params</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            url<span class="token punctuation">:</span> basePath <span class="token operator">+</span> window<span class="token punctuation">.</span>capacityPlanFrameConfig<span class="token punctuation">.</span>common<span class="token punctuation">.</span>commonQueryURL<span class="token punctuation">,</span>
+            type<span class="token punctuation">:</span> <span class="token string">'POST'</span><span class="token punctuation">,</span>
+            dataType<span class="token punctuation">:</span> <span class="token string">'json'</span><span class="token punctuation">,</span>
+            data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                projectId<span class="token punctuation">,</span>
+                key<span class="token punctuation">,</span>
+                params<span class="token punctuation">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>$<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span>
+                    <span class="token punctuation">{</span>
+                    orderby<span class="token punctuation">,</span>
+                    orderSort
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    params<span class="token punctuation">,</span>
+                    queryParams
+                <span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> dataFunc
+<span class="token punctuation">}</span>
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----></div></div>
+    <script src="/assets/js/app.3df8f2d8.js" defer></script><script src="/assets/js/15.32690dc7.js" defer></script>
+  </body>
+</html>
